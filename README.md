@@ -39,3 +39,6 @@ PRを歓迎します。PR's welcome.
 |kyougi_yomi_shimo|
 |kyougi_yomi_kami_hiragana|
 |kyougi_yomi_shimo_hiragana|
+|torifuda_1|
+|torifuda_2|
+|torifuda_3|
