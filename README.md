@@ -4,7 +4,7 @@
 
 🇬🇧 **English** · [🇯🇵 日本語](README.ja.md)
 
-All 100 poems of the Ogura Hyakunin Isshu (小倉百人一首) in one CSV file:<br>
+All 100 poems of the Ogura Hyakunin Isshu (小倉百人一首) in one CSV file<br>
 the text, the readings, the kimariji, how each poem is read aloud in competitive karuta, and what is printed on the cards.
 
 [![Validate CSV](https://github.com/StoneLabs/hyakuninissyu-csv/actions/workflows/validate.yml/badge.svg)](https://github.com/StoneLabs/hyakuninissyu-csv/actions/workflows/validate.yml)
@@ -90,7 +90,7 @@ The examples are poem 60 (大江山). The same list, with types, is in [`datapac
 |`kimariji_shimo`|The shortest start of the lower half (lines 4–5) that tells this poem apart from all the others, with dakuten (the ゛ marks, as in が).|`まだ`|
 |`kimariji_shimo_no_tenten`|The same as `kimariji_shimo`, but without dakuten, the way it looks on the cards.|`また`|
 
-### The five lines
+### Poem text
 
 |Column|Description|Example|
 |-|-|-|
@@ -126,7 +126,7 @@ The examples are poem 60 (大江山). The same list, with types, is in [`datapac
 |`kyougi_yomi_kami_hiragana`|The upper half as read aloud in competitive karuta, all in hiragana as pronounced, with the `ー`/`ｰ` hold marks.|`おおえやまーいくののみちのｰとおけれーばー`|
 |`kyougi_yomi_shimo_hiragana`|The same as `kyougi_yomi_kami_hiragana`, for the lower half.|`まだｰふみもみずーあまのはしーだて`|
 
-### Card
+### Karuta Cards
 
 |Column|Description|Example|
 |-|-|-|
@@ -138,7 +138,7 @@ The examples are poem 60 (大江山). The same list, with types, is in [`datapac
 
 ### Find the one-sound cards
 
-These are the seven cards you can take after hearing only one sound (the famous むすめふさほせ):
+These are the seven cards you can take after hearing only one sound (むすめふさほせ):
 
 ```python
 import csv
@@ -161,7 +161,7 @@ for poem in poems:
 87 む 村雨の
 ```
 
-### Show the readings above the kanji in a web page
+### Show the readings with <ruby> tags
 
 The ruby columns use `[kanji|reading]`. One line turns them into HTML `<ruby>` tags, which every browser can show:
 
@@ -235,7 +235,7 @@ Name: count, dtype: int64
 
 ### Use Frictionless
 
-[`datapackage.json`](datapackage.json) tells [Frictionless](https://frictionlessdata.io/) the type of every column, so numbers come out as numbers and empty cells as `None` (`pip install frictionless`):
+[`datapackage.json`](datapackage.json) is used by [Frictionless](https://frictionlessdata.io/) for type information, so numbers come out as numbers and empty cells as `None` (`pip install frictionless`):
 
 ```python
 from frictionless import Package
