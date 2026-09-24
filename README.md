@@ -30,3 +30,8 @@ PRを歓迎します。PR's welcome.
 |verse_3_hiragana|
 |verse_4_hiragana|
 |verse_5_hiragana|
+|verse_1_hiragana_yomi|
+|verse_2_hiragana_yomi|
+|verse_3_hiragana_yomi|
+|verse_4_hiragana_yomi|
+|verse_5_hiragana_yomi|
