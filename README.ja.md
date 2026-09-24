@@ -266,12 +266,10 @@ Name: count, dtype: int64
 | `datapackage.py` | `datapackage.json` と両方のREADMEが、`data.csv` と同じ列を同じ例で載せていること。 |
 | Frictionless | すべてのセルが `datapackage.json` の型とルールに合っていること。 |
 
-自分で実行するには：
+[act](https://github.com/nektos/act) を使うと、自分で実行できます（Dockerが必要です）。
 
 ```bash
-for script in .github/validators/*.py; do python3 "$script"; done
-pip install frictionless
-frictionless validate datapackage.json
+act -j validate
 ```
 
 ## 貢献について

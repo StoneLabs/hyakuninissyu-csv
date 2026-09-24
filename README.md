@@ -266,12 +266,10 @@ Every push and pull request runs these checks (in [`.github/validators`](.github
 | `datapackage.py` | `datapackage.json` and both READMEs list the same columns as `data.csv`, with the same examples. |
 | Frictionless | Every cell matches the types and rules in `datapackage.json`. |
 
-Run them yourself:
+Run them yourself with [act](https://github.com/nektos/act) (needs Docker):
 
 ```bash
-for script in .github/validators/*.py; do python3 "$script"; done
-pip install frictionless
-frictionless validate datapackage.json
+act -j validate
 ```
 
 ## Contributing
