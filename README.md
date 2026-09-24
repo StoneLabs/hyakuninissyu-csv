@@ -19,6 +19,7 @@ PRを歓迎します。PR's welcome.
 |kimariji_kami|
 |kimariji_kami_yomi|
 |kimariji_shimo|
+|kimariji_shimo_no_tenten|
 |verse_1|
 |verse_2|
 |verse_3|
