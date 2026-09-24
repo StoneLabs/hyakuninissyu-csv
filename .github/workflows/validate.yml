@@ -7,9 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Check columns and empty fields
         run: python3 .github/validators/rows.py
       - name: Check numbers and color numbers
         run: python3 .github/validators/numbers.py
       - name: Check ruby columns against kanji and hiragana
         run: python3 .github/validators/ruby.py
+      - name: Check datapackage.json against data.csv and README
+        run: python3 .github/validators/datapackage.py
+      - name: Validate data.csv against the datapackage.json schema
+        run: |
+          pip install frictionless==5.19.0
+          frictionless validate datapackage.json
