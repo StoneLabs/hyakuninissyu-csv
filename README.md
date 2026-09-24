@@ -16,9 +16,9 @@ PRを歓迎します。PR's welcome.
 |color_num|
 |author|
 |author_hiragana|
-|kimariji_upper|
-|kimariji_upper_yomikata|
-|kimariji_lower|
+|kimariji_kami|
+|kimariji_kami_yomi|
+|kimariji_shimo|
 |verse_1|
 |verse_2|
 |verse_3|
