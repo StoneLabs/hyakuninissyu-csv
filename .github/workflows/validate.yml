@@ -9,3 +9,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check numbers and empty fields
         run: python3 .github/validators/rows.py
+      - name: Check ruby columns against kanji and hiragana
+        run: python3 .github/validators/ruby.py
