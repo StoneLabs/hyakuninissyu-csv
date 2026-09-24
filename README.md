@@ -14,7 +14,7 @@ Columns (the examples are poem 60, 大江山):
 
 |Column|Description|Example|
 |-|-|-|
-|`number`|The poem's number in the Hyakunin Isshu, from 1 to 100.|`60`|
+|`number`|The poem's number in the Hyakunin Isshu, from 1 to 100. One extra row, `序歌`, is the opening poem read before every competitive karuta match. It is not one of the 100 and has no card, so its color, kimariji and torifuda columns are empty.|`60`|
 |`color`|Which of the five color groups the poem belongs to in five-color karuta (五色百人一首): 桃 pink, 青 blue, 黄 yellow, 緑 green or 橙 orange.|`黄`|
 |`color_num`|The poem's position within its color group, from 1 to 20.|`12`|
 |`author`|The poet's name with its reading attached, written as `[name\|reading]`.|`[小式部内侍\|こしきぶのないし]`|
