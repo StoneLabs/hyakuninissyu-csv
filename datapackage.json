@@ -1,0 +1,371 @@
+{
+  "name": "hyakunin-issyu",
+  "title": "百人一首、csvとして / Hyakunin-Issyu CSV",
+  "description": "The 100 poems of the Ogura Hyakunin Isshu, plus the 序歌 read before competitive karuta matches, with readings, kimariji, competition reading marks and torifuda text.",
+  "licenses": [
+    {
+      "name": "Unlicense",
+      "title": "The Unlicense",
+      "path": "https://unlicense.org/"
+    }
+  ],
+  "resources": [
+    {
+      "name": "data",
+      "path": "data.csv",
+      "profile": "tabular-data-resource",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "number",
+            "type": "string",
+            "description": "The poem's number in the Hyakunin Isshu, from 1 to 100. One extra row, `序歌`, is the opening poem read before every competitive karuta match. It is not one of the 100 and has no card, so its color, kimariji and torifuda columns are empty.",
+            "example": "60",
+            "constraints": {
+              "required": true,
+              "unique": true,
+              "pattern": "^([1-9]|[1-9][0-9]|100|序歌)$"
+            }
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "description": "Which of the five color groups the poem belongs to in five-color karuta (五色百人一首): 桃 pink, 青 blue, 黄 yellow, 緑 green or 橙 orange.",
+            "example": "黄",
+            "constraints": {
+              "enum": [
+                "桃",
+                "青",
+                "黄",
+                "緑",
+                "橙"
+              ]
+            }
+          },
+          {
+            "name": "color_num",
+            "type": "integer",
+            "description": "The poem's position within its color group, from 1 to 20.",
+            "example": 12,
+            "constraints": {
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          {
+            "name": "author",
+            "type": "string",
+            "description": "The poet's name with its reading attached, written as `[name|reading]`.",
+            "example": "[小式部内侍|こしきぶのないし]",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "author_kanji",
+            "type": "string",
+            "description": "The poet's name as it is normally written.",
+            "example": "小式部内侍",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "author_hiragana",
+            "type": "string",
+            "description": "How the poet's name is read, in hiragana.",
+            "example": "こしきぶのないし",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kimariji_kami",
+            "type": "string",
+            "description": "The \"deciding sounds\": the shortest start of the upper half (lines 1–3) that tells this poem apart from all the others. Written in old-style kana.",
+            "example": "おほえ"
+          },
+          {
+            "name": "kimariji_kami_yomi",
+            "type": "string",
+            "description": "The same deciding sounds, written the way they are pronounced today.",
+            "example": "おおえ"
+          },
+          {
+            "name": "kimariji_shimo",
+            "type": "string",
+            "description": "The shortest start of the lower half (lines 4–5) that tells this poem apart from all the others, with dakuten (the ゛ marks, as in が).",
+            "example": "まだ"
+          },
+          {
+            "name": "kimariji_shimo_no_tenten",
+            "type": "string",
+            "description": "The same as `kimariji_shimo`, but without dakuten, the way it looks on the cards.",
+            "example": "また"
+          },
+          {
+            "name": "verse_1",
+            "type": "string",
+            "description": "The first line of the poem, with readings attached to the kanji as `[kanji|reading]`. Readings use old-style kana.",
+            "example": "[大江山|おほえやま]",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_2",
+            "type": "string",
+            "description": "The second line, in the same format as `verse_1`.",
+            "example": "いく[野|の]の[道|みち]の",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_3",
+            "type": "string",
+            "description": "The third line, in the same format as `verse_1`.",
+            "example": "[遠|とほ]ければ",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_4",
+            "type": "string",
+            "description": "The fourth line, in the same format as `verse_1`.",
+            "example": "まだふみも[見|み]ず",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_5",
+            "type": "string",
+            "description": "The fifth line, in the same format as `verse_1`.",
+            "example": "[天|あま]の[橋立|はしだて]",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_1_kanji",
+            "type": "string",
+            "description": "The first line of the poem as it is normally written, in kanji and kana.",
+            "example": "大江山",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_2_kanji",
+            "type": "string",
+            "description": "The second line, in the same format as `verse_1_kanji`.",
+            "example": "いく野の道の",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_3_kanji",
+            "type": "string",
+            "description": "The third line, in the same format as `verse_1_kanji`.",
+            "example": "遠ければ",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_4_kanji",
+            "type": "string",
+            "description": "The fourth line, in the same format as `verse_1_kanji`.",
+            "example": "まだふみも見ず",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_5_kanji",
+            "type": "string",
+            "description": "The fifth line, in the same format as `verse_1_kanji`.",
+            "example": "天の橋立",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_1_hiragana",
+            "type": "string",
+            "description": "The first line all in hiragana, with old-style spelling (how it is written, not how it sounds).",
+            "example": "おほえやま",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_2_hiragana",
+            "type": "string",
+            "description": "The second line, in the same format as `verse_1_hiragana`.",
+            "example": "いくののみちの",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_3_hiragana",
+            "type": "string",
+            "description": "The third line, in the same format as `verse_1_hiragana`.",
+            "example": "とほければ",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_4_hiragana",
+            "type": "string",
+            "description": "The fourth line, in the same format as `verse_1_hiragana`.",
+            "example": "まだふみもみず",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_5_hiragana",
+            "type": "string",
+            "description": "The fifth line, in the same format as `verse_1_hiragana`.",
+            "example": "あまのはしだて",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_1_hiragana_yomi",
+            "type": "string",
+            "description": "The first line all in hiragana, spelled the way it is actually pronounced (for example らむ becomes らん, and the particle は becomes わ).",
+            "example": "おおえやま",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_2_hiragana_yomi",
+            "type": "string",
+            "description": "The second line, in the same format as `verse_1_hiragana_yomi`.",
+            "example": "いくののみちの",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_3_hiragana_yomi",
+            "type": "string",
+            "description": "The third line, in the same format as `verse_1_hiragana_yomi`.",
+            "example": "とおければ",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_4_hiragana_yomi",
+            "type": "string",
+            "description": "The fourth line, in the same format as `verse_1_hiragana_yomi`.",
+            "example": "まだふみもみず",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "verse_5_hiragana_yomi",
+            "type": "string",
+            "description": "The fifth line, in the same format as `verse_1_hiragana_yomi`.",
+            "example": "あまのはしだて",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kyougi_yomi_kami",
+            "type": "string",
+            "description": "The upper half as it is read aloud in competitive karuta, with readings attached as `[kanji|reading]`. `ー` means hold the sound long, `ｰ` means hold it briefly. Based on the reader's guide of the All-Japan Karuta Association.",
+            "example": "[大江山|おおえやま]ーいく[野|の]の[道|みち]のｰ[遠|とお]けれーばー",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kyougi_yomi_shimo",
+            "type": "string",
+            "description": "The same as `kyougi_yomi_kami`, for the lower half.",
+            "example": "まだｰふみも[見|み]ずー[天|あま]の[橋|はし]ー[立|だて]",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kyougi_yomi_kami_kanji",
+            "type": "string",
+            "description": "The upper half as read aloud in competitive karuta, in kanji and kana, with the `ー`/`ｰ` hold marks.",
+            "example": "大江山ーいく野の道のｰ遠けれーばー",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kyougi_yomi_shimo_kanji",
+            "type": "string",
+            "description": "The same as `kyougi_yomi_kami_kanji`, for the lower half.",
+            "example": "まだｰふみも見ずー天の橋ー立",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kyougi_yomi_kami_hiragana",
+            "type": "string",
+            "description": "The upper half as read aloud in competitive karuta, all in hiragana as pronounced, with the `ー`/`ｰ` hold marks.",
+            "example": "おおえやまーいくののみちのｰとおけれーばー",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "kyougi_yomi_shimo_hiragana",
+            "type": "string",
+            "description": "The same as `kyougi_yomi_kami_hiragana`, for the lower half.",
+            "example": "まだｰふみもみずーあまのはしーだて",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "torifuda_1",
+            "type": "string",
+            "description": "The first line printed on the card players grab (torifuda). The card shows the lower half in old-style kana without dakuten: 5 characters, then 5, then the rest.",
+            "example": "またふみも"
+          },
+          {
+            "name": "torifuda_2",
+            "type": "string",
+            "description": "The second line printed on the card.",
+            "example": "みすあまの"
+          },
+          {
+            "name": "torifuda_3",
+            "type": "string",
+            "description": "The third line printed on the card: whatever characters are left.",
+            "example": "はしたて"
+          }
+        ],
+        "primaryKey": [
+          "number"
+        ],
+        "missingValues": [
+          ""
+        ]
+      }
+    }
+  ]
+}
