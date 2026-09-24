@@ -9,6 +9,7 @@ the text, the readings, the kimariji, how each poem is read aloud in competitive
 
 [![Validate CSV](https://github.com/StoneLabs/hyakuninissyu-csv/actions/workflows/validate.yml/badge.svg)](https://github.com/StoneLabs/hyakuninissyu-csv/actions/workflows/validate.yml)
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](LICENSE)
+[![frictionless csv: supported](https://img.shields.io/badge/frictionless%20csv-supported-green.svg)](datapackage.json)
 
 </div>
 
@@ -230,6 +231,26 @@ kimariji_kami_yomi
 5     2
 6     6
 Name: count, dtype: int64
+```
+
+### Use Frictionless
+
+[`datapackage.json`](datapackage.json) tells [Frictionless](https://frictionlessdata.io/) the type of every column, so numbers come out as numbers and empty cells as `None` (`pip install frictionless`):
+
+```python
+from frictionless import Package
+
+rows = Package("datapackage.json").get_resource("data").read_rows()
+poems = {row["number"]: row for row in rows}
+
+poem = poems["60"]
+print(poem["color"], poem["color_num"], type(poem["color_num"]).__name__)  # color_num is already a number
+print(poems["序歌"]["color"])  # empty cells become None
+```
+
+```text
+黄 12 int
+None
 ```
 
 ## Notes

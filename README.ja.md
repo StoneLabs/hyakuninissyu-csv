@@ -9,6 +9,7 @@
 
 [![Validate CSV](https://github.com/StoneLabs/hyakuninissyu-csv/actions/workflows/validate.yml/badge.svg)](https://github.com/StoneLabs/hyakuninissyu-csv/actions/workflows/validate.yml)
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](LICENSE)
+[![frictionless csv: supported](https://img.shields.io/badge/frictionless%20csv-supported-green.svg)](datapackage.json)
 
 </div>
 
@@ -230,6 +231,26 @@ kimariji_kami_yomi
 5     2
 6     6
 Name: count, dtype: int64
+```
+
+### Frictionlessを使う
+
+[`datapackage.json`](datapackage.json) には各列の型が書かれているので、[Frictionless](https://frictionlessdata.io/) で読み込むと数値は数値として、空のセルは `None` として読み込まれます（`pip install frictionless`）。
+
+```python
+from frictionless import Package
+
+rows = Package("datapackage.json").get_resource("data").read_rows()
+poems = {row["number"]: row for row in rows}
+
+poem = poems["60"]
+print(poem["color"], poem["color_num"], type(poem["color_num"]).__name__)  # color_num はすでに数値です
+print(poems["序歌"]["color"])  # 空のセルは None になります
+```
+
+```text
+黄 12 int
+None
 ```
 
 ## 補足
