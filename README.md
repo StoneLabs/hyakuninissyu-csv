@@ -35,3 +35,7 @@ PRを歓迎します。PR's welcome.
 |verse_3_hiragana_yomi|
 |verse_4_hiragana_yomi|
 |verse_5_hiragana_yomi|
+|kyougi_yomi_kami|
+|kyougi_yomi_shimo|
+|kyougi_yomi_kami_hiragana|
+|kyougi_yomi_shimo_hiragana|
